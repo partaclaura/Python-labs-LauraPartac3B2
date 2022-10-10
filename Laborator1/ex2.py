@@ -3,7 +3,7 @@
 def check_for_vowels(given_string):
     n_of_vowels = 0
     for ch in given_string:
-        if ch in "aeiou":
+        if ch in "aeiouAEIOU":
             n_of_vowels = n_of_vowels + 1
     return n_of_vowels
 
