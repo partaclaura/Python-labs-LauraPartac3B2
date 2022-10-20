@@ -5,6 +5,7 @@
 
 
 def ascii_divisible(lst, x = 1, flg = True):
+    list_of_lists = []
     for lst_string in lst:
         char_list = []
         for c in lst_string:
@@ -12,7 +13,8 @@ def ascii_divisible(lst, x = 1, flg = True):
                 char_list.append(c)
             elif flg is False and ord(c) % x != 0:
                 char_list.append(c)
-        print("For string ", lst_string, " resulted list is: ", char_list)
+        list_of_lists.append(char_list)
+    return list_of_lists
 
 
 input_list = input("Give list of strings: ")
@@ -22,4 +24,4 @@ input_flag = str(input("Set flag to true(t) or false(f)?[t/f]: "))
 f = True
 if input_flag == "f":
     f = False
-ascii_divisible(given_list, input_x, f)
+print(ascii_divisible(given_list, input_x, f))
