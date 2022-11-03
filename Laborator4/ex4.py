@@ -8,18 +8,18 @@ import os
 
 
 def unique_ext(directory):
-    extensions = []
+    extensions = {}
     for file in os.scandir(directory):
         if file.is_file():
             split_filename = file.name.split('.')
             if split_filename[1] not in extensions:
-                extensions.append(split_filename[1])
+                extensions[split_filename[1]] = 1
             else:
-                extensions.remove(split_filename[1])
-    extensions.sort()
-    return ' '.join(extensions)
+                extensions[split_filename[1]] = extensions[split_filename[1]] + 1
+    unique_extensions = [ext for ext in extensions.keys() if extensions[ext] == 1]
+    unique_extensions.sort()
+    return ' '.join(unique_extensions)
 
 
-directory_path = "C:\\Python-labs\\files"
+directory_path = str(input("Give directory: "))
 print(unique_ext(directory_path))
-
